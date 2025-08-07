@@ -9,11 +9,8 @@ connectDB();
 
 const app = express();
 
-const corsOptions = {
-  origin: "https://contactapp-frontend-ck54nrzy8-florences-projects-0985f435.vercel.app/",
-  methods: ["GET", "POST", "DELETE", "PUT", "OPTIONS"],
-};
-app.use(cors(corsOptions));
+const cors = require('cors');
+app.use(cors());
 
 app.use(express.json());
 
