@@ -5,8 +5,16 @@ exports.createContact = async (req, res) => {
   try {
     const contact = await Contact.create(req.body);
     res.status(201).json(contact);
-  } catch (err) {
-    res.status(400).json({ message: err.message });
+  } catch (error) {
+    // Handle MongoDB duplicate key error
+    if (error.code === 11000) {
+      const duplicatedField = Object.keys(error.keyValue)[0];
+      const message = `Oops! The ${duplicatedField} "${error.keyValue[duplicatedField]}" is already in use. Please use a different one.`;
+      return res.status(400).json({ message });
+    }
+
+    // General error fallback
+    res.status(400).json({ message: error.message });
   }
 };
 
