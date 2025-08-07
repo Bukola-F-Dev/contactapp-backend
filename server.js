@@ -8,7 +8,13 @@ dotenv.config();
 connectDB();
 
 const app = express();
-app.use(cors());
+
+const corsOptions = {
+  origin: "https://contactapp-frontend-izdgbdzct-florences-projects-0985f435.vercel.app",
+  methods: ["GET", "POST", "DELETE", "PUT", "OPTIONS"],
+};
+app.use(cors(corsOptions));
+
 app.use(express.json());
 
 app.use('/api/contacts', contactRoutes);
