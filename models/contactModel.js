@@ -20,12 +20,11 @@ const contactSchema = new mongoose.Schema({
   },
   note: {
     type: String,
-    required: [true, "Note is required"],
+    required: false,
     trim: true,
   },
 }, {
   timestamps: true
 });
-
 
 module.exports = mongoose.model('Contact', contactSchema);
