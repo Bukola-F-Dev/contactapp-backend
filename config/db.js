@@ -6,7 +6,7 @@ const connectDB = async () => {
     await mongoose.connect(process.env.MONGO_URI);
     console.log('MongoDB connected');
 
-    // Ensure this runs only after connection is open
+    // This should run only after connection is open
     mongoose.connection.once('open', async () => {
       try {
         // Drop all indexes on the "contacts" collection
