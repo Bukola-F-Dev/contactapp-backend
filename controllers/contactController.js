@@ -13,7 +13,7 @@ exports.createContact = async (req, res) => {
       return res.status(400).json({ message });
     }
 
-    // General error fallback
+    // General error 
     res.status(400).json({ message: error.message });
   }
 };
